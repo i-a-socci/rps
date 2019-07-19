@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head><title>Rock Paper Scissors</title>
+<style>
+h2 {
+    font-family:arial;
+}
+div {
+   border: 1px solid white;
+   height:20px;
+   width:180px;
+   text-align:center;
+   }
+
+form {
+    display: inline-block;
+}
+
+#button {
+    display: inline-block;
+    height:20px;
+	width:170px;
+	background-color:#000000;
+	font-family:arial;
+	font-weight:bold;
+	color:#ffffff;
+	border-radius: 5px;
+	text-align:center;
+	margin-top:2px;
+}
+
+.list {
+	font-family:garamond;
+	color:white;
+}
+.uC {
+   background-color:black;
+   color: white;
+  }
+.cC {
+   background-color:black;
+   color: white;
+  }
+.result {
+   background-color:green;
+   color: white;
+  }
+   
+</style>
+</head>
+<body>
+		<h2>What's your choice? (Rock, Paper, Scissors)</h2>
+		<form name="checkListForm">
+			<input type="text,reset" name="checkListItem"/>
+		</form>
+		<div id="button">Results are...</div>
+		<br/>
+		<div class="list" style="opacity: 0"></div>
+
+  <div class="uC"></div>
+  <div class="cC"></div>
+  <div class="result"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  
+//Do you choose rock, paper or scissors?
+var main = function() {
+ $('#button').click( function() {
+     var userChoice = $('input[name=checkListItem]').val();
+     var computerChoice = Math.random();
+     if (computerChoice < 0.34) {
+         computerChoice = "rock";
+     }
+	 else if(computerChoice <= 0.67) {
+         computerChoice = "paper";
+     }
+	 else {
+         computerChoice = "scissors";
+     }
+	 
+     var compare = function(choice1, choice2) {
+        if (choice1 === choice2) {
+            return "The result is a tie!";
+        }
+		else if (choice1 === "rock") {
+            if (choice2 === "scissors") {
+                return "Rock wins";
+            } 
+			else {
+                return "Paper wins";
+			}
+        }
+		else if (choice1 === "paper") {
+            if (choice2 === "rock") {
+                return "Paper wins";
+            } 
+			else {
+                return "Scissors wins";
+			}
+        }
+		else if (choice1 === "scissors") {
+            if (choice2 === "rock") {
+                return "Rock wins";
+            } 
+			else {
+                return "Scissors wins";
+			}
+		}
+	}
+
+  var result = compare(userChoice, computerChoice);
+  $('.uC').text("User: " + userChoice);
+  $('.cC').text("Computer: " + computerChoice);
+  $('.result').text("Result: " + result);
+  $('input[name=checkListItem]').val("");
+   });
+  };
+  $(document).ready(main);
+</script>
+
+</body>
+</html>
