@@ -5,7 +5,24 @@
     <title>Rock,Paper,Scissors</title> 
 </head> 
 
-
+<style>
+    #message1 { 
+        font-family:'Roboto Condensed', 'Oswald', sans-serif;
+    } 
+    
+    #button { 
+        display: inline-block;
+        height:22px; 
+        width:92px;
+        background-color:#000000;
+        font-family:'Roboto Condensed', 'Oswald', sans-serif;
+        font-weight:bold;
+        color:#ffffff;
+        border-radius: 5px;
+        text-align:center; 
+        margin-top:2px;
+    } 
+    </style> 
 
     <body> 
     <div id="message1" > 
@@ -21,7 +38,7 @@
         <option>Paper</option> 
         <option>Scissors</option> 
     </select> 
-    <input type="button" value="Results are..." onclick="myGame()"> 
+    <input id="button" type="button" value="Results are..." onclick="myGame()"> 
 </form> 
 
     <script> 
