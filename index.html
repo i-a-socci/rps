@@ -1,124 +1,58 @@
-<!DOCTYPE html>
-<head><title>Rock Paper Scissors</title>
-<style>
-h2 {
-    font-family:arial;
-}
-div {
-   border: 1px solid white;
-   height:20px;
-   width:180px;
-   text-align:center;
-   }
+<!DOCTYPE html> 
+<html lang="ja"> 
 
-form {
-    display: inline-block;
-}
+<head> 
+    <title>Rock,Paper,Scissors</title> 
+</head> 
 
-#button {
-    display: inline-block;
-    height:20px;
-	width:170px;
-	background-color:#000000;
-	font-family:arial;
-	font-weight:bold;
-	color:#ffffff;
-	border-radius: 5px;
-	text-align:center;
-	margin-top:2px;
-}
 
-.list {
-	font-family:garamond;
-	color:white;
-}
-.uC {
-   background-color:black;
-   color: white;
-  }
-.cC {
-   background-color:black;
-   color: white;
-  }
-.result {
-   background-color:green;
-   color: white;
-  } 
 
-</style>
-</head>
-<body>
-		<h2>What's your choice? (Rock, Paper, Scissors)</h2>
-		<label for="option" name="checkListForm">Choose one of the following:</label>
-        <select id="option" required>
-          <option value="rock">Rock</option>
-        <option value="paper">Paper</option>
-        <option value="scissors">Scissors</option>
-        </select>
-		<div id="button">Results are...</div>
-		<br/>
-		<div class="list" style="opacity: 0"></div>
+    <body> 
+    <div id="message1" > 
+        <h2>Rock, Paper, or Scissors?</h3> 
+    </div> 
+    <div id="message2" > 
+        <h3>Select your option and see the results</h3> 
+    </div> 
 
-  <div class="uC"></div>
-  <div class="cC"></div>
-  <div class="result"></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript">
-  
-//Do you choose rock, paper or scissors?
-var main = function() {
- $('#button').click( function() {
-     var userChoice = $('input[name=checkListItem]').val();
-     var computerChoice = Math.random();
-     if (computerChoice < 0.34) {
-         computerChoice = "rock";
-     }
-	 else if(computerChoice <= 0.67) {
-         computerChoice = "paper";
-     }
-	 else {
-         computerChoice = "scissors";
-     }
-	 
-     var compare = function(choice1, choice2) {
-        if (choice1 === choice2) {
-            return "The result is a tie!";
-        }
-		else if (choice1 === "rock") {
-            if (choice2 === "scissors") {
-                return "Rock wins";
-            } 
-			else {
-                return "Paper wins";
-			}
-        }
-		else if (choice1 === "paper") {
-            if (choice2 === "rock") {
-                return "Paper wins";
-            } 
-			else {
-                return "Scissors wins";
-			}
-        }
-		else if (choice1 === "scissors") {
-            if (choice2 === "rock") {
-                return "Rock wins";
-            } 
-			else {
-                return "Scissors wins";
-			}
-		}
-	}
+<form> 
+    <select id="rps"> 
+        <option>Rock</option> 
+        <option>Paper</option> 
+        <option>Scissors</option> 
+    </select> 
+    <input type="button" value="Results are..." onclick="myGame()"> 
+</form> 
 
-  var result = compare(userChoice, computerChoice);
-  $('.uC').text("User: " + userChoice);
-  $('.cC').text("Computer: " + computerChoice);
-  $('.result').text("Result: " + result);
-  $('input[name=checkListItem]').val("");
-   });
-  };
-  $(document).ready(main);
-</script>
+    <script> 
+    function myGame() { 
+    var myte = document.getElementById("rps").selectedIndex; 
+    var cpunum = Math.floor(Math.random()*3);
+    var cpuhand; 
+    var judge; 
 
-</body>
-</html>
+    if(cpunum == 0) { 
+    cpuhand = "Rock"; 
+    } else if(cpunum == 1) { 
+    cpuhand = "Scissors"; 
+    } else if(cpunum == 2) { 
+    cpuhand = "Paper"; 
+        } 
+
+        if(myte == 0 && cpunum == 1) { 
+    judge = "You win!"; 
+        } else if(myte == 1 && cpunum == 2) { 
+    judge = "You win!"; 
+        } else if(myte == 2 && cpunum == 0) { 
+    judge = "You win!"; 
+        } else if(myte == cpunum) { 
+    judge = "It's a tie!"; 
+        } else { 
+        judge = "You lose!"; 
+    } 
+        document.getElementById("message1").innerHTML = "<h3>Computer Chose: " + cpuhand + "</h3>"; 
+        document.getElementById("message2").innerHTML = "<h3>Result: " + judge + "</h3>"; 
+        } 
+        </script> 
+    </body> 
+</html> 
